@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
-Dir[File.expand_path("lib/**/*.rb")].each(&method(:require))
-
-DarkDragon.run ARGV
+# require 'dark_dragon'
+require 'pry'
+binding.pry
+DarkDragon.run(ARGV)

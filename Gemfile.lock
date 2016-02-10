@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dark-dragon (0.0.1)
+    dark_dragon (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -32,9 +32,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler
-  dark-dragon!
-  pry
+  bundler (~> 1.11)
+  dark_dragon!
+  pry (~> 0.10)
   rspec (~> 3.1)
 
 BUNDLED WITH
