@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+Dir[File.expand_path("lib/**/*.rb")].each(&method(:require))
+
+DarkDragon.run ARGV
