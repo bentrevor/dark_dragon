@@ -28,5 +28,14 @@ describe DarkDragon::Potion do
 
       expect(new_lines).to eq ['b','d']
     end
+
+    it 'evals the command' do
+      lines = ['a','b','c','d']
+      command = 'line * 3'
+
+      new_lines = described_class.drink(lines, command)
+
+      expect(new_lines).to eq ['aaa','bbb','ccc','ddd']
+    end
   end
 end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DarkDragon::Output do
   it 'writes to stdout if there is no output_file' do
-    expect($stdout).to receive(:puts).exactly(3).times
+    expect($stdout).to receive(:puts)
 
     described_class.write(['asdf', 'qwer', 'jkl;'])
   end
