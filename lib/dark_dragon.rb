@@ -8,9 +8,9 @@ module DarkDragon
     options = Options.from_args(args)
 
     # TODO won't work for gigantic files
-    lines = File.read(options.input_path).split("\n")
+    file_contents = File.read(options.input_path)
 
-    new_lines = Potion.drink(lines, options.command)
+    new_lines = Potion.drink(file_contents, options.command)
 
     Output.write(new_lines, options.output_file)
   end
