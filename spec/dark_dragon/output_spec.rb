@@ -1,15 +1,19 @@
 require 'spec_helper'
 
 describe DarkDragon::Output do
-  it 'writes to stdout if there is no output_file' do
-    expect($stdout).to receive(:puts)
+  let(:lines) { ['asdf', 'qwer', 'zxcv'] }
+  let(:content) { lines.join }
+  let(:filepath) { 'path/to/file' }
 
-    described_class.write(['asdf', 'qwer', 'jkl;'])
+  it 'writes to stdout if there is a blank output_file' do
+    expect($stdout).to receive(:puts).with(lines)
+
+    described_class.write('', lines)
   end
 
-  it 'only supports stdout for now' do
-    expect {
-      described_class.write(['asdf', 'qwer', 'jkl;'], 'output/file/path')
-    }.to raise_error(StandardError)
+  it 'writes to a file' do
+    expect(File).to receive(:write).with(filepath, content)
+
+    described_class.write(filepath, lines)
   end
 end

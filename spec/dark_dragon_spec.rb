@@ -27,12 +27,17 @@ describe DarkDragon do
 
     describe 'output' do
       it 'writes output to stdout when no file is given' do
-        expect(DarkDragon::Output).to receive(:write).with(new_lines, nil)
+        expect(DarkDragon::Output).to receive(:write).with('', new_lines)
 
         described_class.run([filepath, command])
       end
 
-      it 'writes output to a file'
+      it 'writes output to a file' do
+        filepath = 'path/to/new/file'
+        expect(DarkDragon::Output).to receive(:write).with(filepath, new_lines)
+
+        described_class.run([filepath, command, '-o', filepath])
+      end
     end
   end
 end

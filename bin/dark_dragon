@@ -1,6 +1,4 @@
 #!/usr/bin/env ruby
 
-# require 'dark_dragon'
-require 'pry'
-binding.pry
+require 'dark_dragon'
 DarkDragon.run(ARGV)

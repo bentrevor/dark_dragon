@@ -1,10 +1,10 @@
 module DarkDragon
   class Output
-    def self.write(lines, output_filepath=nil)
-      if output_filepath
-        raise StandardError
-      else
+    def self.write(output_filepath, lines)
+      if output_filepath.empty?
         puts lines
+      else
+        File.write(output_filepath, lines.join)
       end
     end
   end
