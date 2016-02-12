@@ -1,22 +1,30 @@
 module DarkDragon
   class Options
-    attr_accessor :input_path, :command, :output_filepath
+    attr_accessor :input_path, :command, :output_path, :backup_path
 
     def self.from_ARGV(argv)
-      output_filepath = ''
+      raise StandardError unless [2,4].include?(argv.length)
+      output_path = ''
+      backup_path = ''
 
       if flag_index = argv.index('-o')
-        output_filepath = argv[flag_index + 1]
+        output_path = argv[flag_index + 1]
         2.times { argv.delete_at(flag_index) }
       end
 
-      new(argv[0], argv[1], output_filepath)
+      if flag_index = argv.index('-i')
+        backup_path = argv[flag_index + 1]
+        2.times { argv.delete_at(flag_index) }
+      end
+
+      new(argv[0], argv[1], output_path, backup_path)
     end
 
-    def initialize(path, command, output_filepath)
+    def initialize(path, command, output_path, backup_path)
       self.input_path = path
       self.command = command
-      self.output_filepath = output_filepath
+      self.output_path = output_path
+      self.backup_path = backup_path
     end
   end
 end

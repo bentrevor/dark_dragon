@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe DarkDragon do
-  let(:filepath) { 'fake/filepath' }
+  let(:path) { 'fake/path' }
   let(:command) { 'some command' }
   let(:file_contents) { "line1\nline2" }
   let(:new_lines) { ['new line1', 'new line2'] }
@@ -14,29 +14,29 @@ describe DarkDragon do
     end
 
     it 'reads a file' do
-      expect(File).to receive(:read).with(filepath)
+      expect(File).to receive(:read).with(path)
 
-      described_class.run([filepath, command])
+      described_class.run([path, command])
     end
 
     it 'drinks a potion' do
       expect(DarkDragon::Potion).to receive(:drink).with(file_contents, command)
 
-      described_class.run([filepath, command])
+      described_class.run([path, command])
     end
 
     describe 'output' do
       it 'writes output to stdout when no file is given' do
         expect(DarkDragon::Output).to receive(:write).with('', new_lines)
 
-        described_class.run([filepath, command])
+        described_class.run([path, command])
       end
 
       it 'writes output to a file' do
-        filepath = 'path/to/new/file'
-        expect(DarkDragon::Output).to receive(:write).with(filepath, new_lines)
+        path = 'path/to/new/file'
+        expect(DarkDragon::Output).to receive(:write).with(path, new_lines)
 
-        described_class.run([filepath, command, '-o', filepath])
+        described_class.run([path, command, '-o', path])
       end
     end
   end

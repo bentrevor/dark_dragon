@@ -8,6 +8,6 @@ module DarkDragon
     options = Options.from_ARGV(argv)
     file_contents = File.read(options.input_path) # TODO won't work for gigantic files
     new_content = Potion.drink(file_contents, options.command)
-    Output.write(options.output_filepath, new_content)
+    Output.write(options.output_path, new_content)
   end
 end
