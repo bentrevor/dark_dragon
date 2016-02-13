@@ -26,19 +26,39 @@ describe DarkDragon::Potion do
         output: "aaa\nsss\nddd\nfff",
       },
       {
-        desc: 'can delete lines',
+        desc: 'deletes lines',
         command: 'line_number <= 2 ? nil : line',
         output: "d\nf",
       },
       {
+        desc: 'deletes all lines',
+        command: 'nil',
+        output: '',
+      },
+      {
         desc: 'can count lines',
         command: 'count',
-        output: "4",
+        output: '4',
       },
       {
         desc: 'can count lines with conditionals',
         command: 'count if line_number.odd?',
-        output: "2",
+        output: '2',
+      },
+      {
+        desc: 'deletes lines (with a better syntax)',
+        command: 'delete(line) if line_number == 2',
+        output: "a\nd\nf",
+      },
+      {
+        desc: 'deletes lines (with a better syntax)',
+        command: 'delete(line) unless line_number == 2',
+        output: 's',
+      },
+      {
+        desc: 'deletes all lines',
+        command: 'delete(line)',
+        output: '',
       },
     ].each do |example|
       it example[:desc] do
