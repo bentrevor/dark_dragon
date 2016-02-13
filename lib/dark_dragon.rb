@@ -5,9 +5,10 @@ require 'dark_dragon/potion.rb'
 
 module DarkDragon
   def self.run(argv)
-    options = Options.from_ARGV(argv)
+    options = Options.parse_ARGV(argv)
     file_contents = File.read(options.input_path) # TODO won't work for gigantic files
     new_content = Potion.drink(file_contents, options.command)
-    Output.write(options.output_path, new_content)
+
+    Output.write(options, new_content)
   end
 end
