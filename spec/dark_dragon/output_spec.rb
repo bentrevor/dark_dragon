@@ -7,12 +7,12 @@ describe DarkDragon::Output do
   it 'writes to stdout if there is a blank output_file' do
     expect($stdout).to receive(:puts).with(content)
 
-    described_class.write('', content)
+    described_class.write(double(DarkDragon::Options, {output_path: ''}), content)
   end
 
   it 'writes to a file' do
     expect(File).to receive(:write).with(path, content)
 
-    described_class.write(path, content)
+    described_class.write(double(DarkDragon::Options, {output_path: path}), content)
   end
 end

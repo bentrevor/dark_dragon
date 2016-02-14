@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
-require 'dark_dragon'
+require './lib/dark_dragon'
 DarkDragon.run(ARGV)

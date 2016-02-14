@@ -25,12 +25,13 @@ module DarkDragon
     private
 
     def self.flag_value(argv, flag)
-      path = ''
       if flag_index = argv.index("-#{flag}")
         path = argv[flag_index + 1]
         2.times { argv.delete_at(flag_index) }
+        path
+      else
+        ''
       end
-      path
     end
 
     def self.i_flag?(output_path, backup_path)

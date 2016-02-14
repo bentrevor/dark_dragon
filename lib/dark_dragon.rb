@@ -1,7 +1,7 @@
 require_relative 'version'
-require 'dark_dragon/options.rb'
-require 'dark_dragon/output.rb'
-require 'dark_dragon/potion.rb'
+require_relative 'dark_dragon/options.rb'
+require_relative 'dark_dragon/output.rb'
+require_relative 'dark_dragon/potion.rb'
 
 module DarkDragon
   def self.run(argv)
